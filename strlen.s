@@ -1,6 +1,6 @@
-global my_strlen
+global ft_strlen
 section .text
-my_strlen:
+ft_strlen:
 
 	push rbp
 	mov rbp, rsp
