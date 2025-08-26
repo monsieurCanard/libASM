@@ -1,23 +1,19 @@
 global ft_strlen
 section .text
 ft_strlen:
-
-	push rbp
-	mov rbp, rsp
-	mov rcx, rdi
+	mov rax, 0
+	mov rcx, rsi
 
 .loop:
-	mov al, byte [rdi]
+	mov al, byte [rcx]
 	test al, al
 	jz .end
 
-	inc rdi;
-	; inc rcx;
+	inc rcx;
 	jmp .loop;
 
 .end: 
-	mov rax, rdi;
-	sub rax, rcx
-	pop rbp
+	sub rcx, rsi
+	mov rax, rcx
 	ret
 

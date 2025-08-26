@@ -4,7 +4,6 @@ section .text
 
 ; int strcmp(const char *s1, const char *s2);
 ft_strcmp:
-	xor eax, eax
 	mov eax, 0
 
 .loop: 

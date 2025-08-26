@@ -1,6 +1,6 @@
 # libASM
 Library of Assembler Functions
-
+PIE : Position independent executable
 • You must write 64-bit assembly. Beware of the "calling convention".
 • You can’t do inline ASM, you must do ’.s’ files.
 • You must compile your assembly code with nasm.
@@ -81,3 +81,18 @@ rsi			esi			si			—					—
 rbp			ebp			bp			—					—
 rsp			esp			sp			—					—
 r8–r15	r8d–r15d	r8w–r15w	r8b–r15b	—
+
+
+PLT (Procedure Linkage Table) = petit trampoline de code dans ton binaire.
+
+GOT (Global Offset Table) = table qui contient les vraies adresses remplies par le loader au démarrage.
+
+Quand tu fais :
+
+call __errno_location wrt ..plt
+
+Ton exécutable fait :
+
+→ saute dans le trampoline PLT
+→ qui lit l’entrée correspondante dans la GOT
+→ qui pointe vers la vraie fonction dans la libc
