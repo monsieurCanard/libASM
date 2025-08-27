@@ -1,6 +1,5 @@
 # libASM
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Language](https://img.shields.io/badge/language-Assembly-red.svg)](https://en.wikipedia.org/wiki/Assembly_language)
 [![Architecture](https://img.shields.io/badge/architecture-x86--64-green.svg)](https://en.wikipedia.org/wiki/X86-64)
 
@@ -39,10 +38,6 @@ make
 
 # Test des fonctions
 make test
-
-# Nettoyage
-make clean
-make fclean
 ```
 
 ### 📁 Structure du projet
