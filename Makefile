@@ -7,7 +7,7 @@ SRCS = ft_strlen.s \
 			ft_strdup.s
 
 SRCS_TEST = srcs/tester/tester.c
-NAME_TEST = test
+NAME_TEST = testeur
 OBJ_DIR = srcs/objs/
 
 OBJ = $(SRCS:%.s=$(OBJ_DIR)%.o)
@@ -31,4 +31,12 @@ $(OBJ_DIR)%.o:$(SRCS_DIR)%.s
 
 test: $(NAME) $(SRCS_TEST)
 	gcc $(CFLAGS) -o $(NAME_TEST) $(SRCS_TEST) -L. -lasm
-	./test
+	./$(NAME_TEST)
+
+clean:
+	rm -rf srcs/objs/
+
+fclean: clean
+	rm $(NAME)
+	rm $(NAME_TEST)
+
