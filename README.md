@@ -26,7 +26,7 @@ rax → registre principal (souvent pour les retours de fonction, calculs).
 
 rbx, rcx, rdx → registres de travail.
 
-rsi, rdi → souvent pour passer des arguments (ex: pointeurs).
+rdi, rsi → souvent pour passer des arguments (ex: pointeurs).
 
 rsp → stack pointer (pointe vers le sommet de la pile).
 

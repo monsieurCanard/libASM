@@ -2,7 +2,7 @@ global ft_strlen
 section .text
 ft_strlen:
 	mov rax, 0
-	mov rcx, rsi
+	mov rcx, rdi
 
 .loop:
 	mov al, byte [rcx]
@@ -13,7 +13,7 @@ ft_strlen:
 	jmp .loop;
 
 .end: 
-	sub rcx, rsi
+	sub rcx, rdi
 	mov rax, rcx
 	ret
 
