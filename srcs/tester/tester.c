@@ -11,20 +11,24 @@ extern ssize_t ft_write(int fd, const void *buf, size_t count);
 extern ssize_t ft_read(int fd, void *buf, size_t count);
 extern char *ft_strdup(const char *s);
 
+int counter = 0;
+
 void headerTest(char* nameFunction) {
 	printf("\n----------------------------------------------------------\n");
-	printf("FUNCTION -> %s", nameFunction);
+	printf("FUNCTION --------- [%s]", nameFunction);
 	printf("\n----------------------------------------------------------\n");
 }
 
-void endTest(char* nameFunction) {
+void endTest(int nb_test) {
 	printf("\n----------------------------------------------------------\n");
-	printf("TEST PASSED 0/0 for %s", nameFunction);
+	printf("TEST PASSED %d/%d",counter, nb_test);
 	printf("\n----------------------------------------------------------\n");
+	counter = 0;
 }
 
 void testOK() {
 	printf("\e[1;32m[OK]\e[0m\n");
+	counter++;
 }
 
 void testKO() {
@@ -34,9 +38,9 @@ void testKO() {
 
 int main(void) {
 
-		/*
-	 ! FT_STRCPY
-	*/ 
+/*
+! FT_STRCPY
+*/ 
 	headerTest("ft_strlen");
 	
 	printf("Test Empty: ");
@@ -51,7 +55,7 @@ int main(void) {
 	printf("Test Diff: ");
 	(ft_strlen("") != strlen("awkjdhakjdwhakjwdh")) ? testOK() : testKO();
 	
-	endTest("ft_strlen");
+	endTest(4);
 
 
 
@@ -77,7 +81,7 @@ int main(void) {
 	strcpy(newMessage2, "Assembleur");
 	(strcmp(newMessage, newMessage2) != 0) ? testOK() : testKO();
 
-	endTest("ft_strcpy");
+	endTest(3);
 
 
 		/*
@@ -101,11 +105,11 @@ int main(void) {
 	printf("Test Diff 2: ");
 	(ft_strcmp("Hello beautifull World!", "Hello awesome World!") < 0) ? testOK() : testKO();
 	
-	endTest("ft_strcmp");
+	endTest(5);
 
-			/*
-	 ! FT_WRITE
-	*/
+/*
+! FT_WRITE
+*/
 	headerTest("ft_write");
 	
 		printf("Test empty: ");
@@ -114,20 +118,19 @@ int main(void) {
 	printf("Test simple: ");
 	(write(1, "coucou\n", 7) == ft_write(1, "coucou\n", 7)) ? testOK() : testKO();
 
-		int fd = open("srcs/tester/testWrite.txt", O_RDWR);
+	int fd = open("srcs/tester/testWrite.txt", O_RDWR);
 	if(fd == -1) {
 		printf("Issue when opening TestSimple.txt");
 		return -1;
 	}
-	printf("Test long: ");
+	printf("Test file: ");
 	(write(fd, "SqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualala", 1832) == ft_write(fd, "SqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualala", 1832)) ? testOK() : testKO();
 
 
 	
-	printf("Test with simple file: ");
 	(write(fd, "J'ecris un message dans ce fichier", 34) == ft_write(fd, "J'ecris un message dans ce fichier", 34)) ? testOK() : testKO();
 
-	endTest("ft_write");
+	endTest(4);
 	
 
 
@@ -151,7 +154,7 @@ int main(void) {
 	ft_result = ft_read(fd, buffR, sizeof(buffR));
 	lseek(fd, 0, SEEK_SET);
 	std_result = read(fd, buffR, sizeof(buffR));
-	printf("ft_read: %ld, read: %ld ", ft_result, std_result);
+	// printf("ft_read: %ld, read: %ld ", ft_result, std_result);
 	(ft_result == std_result) ? testOK() : testKO();
 	
 	fd = open("srcs/tester/testRead.txt", O_RDWR);
@@ -164,7 +167,7 @@ int main(void) {
 	ft_result = ft_read(fd, buffR, sizeof(buffR));
 	lseek(fd, 0, SEEK_SET);
 	std_result = read(fd, buffR, sizeof(buffR));
-	printf("ft_read: %ld, read: %ld ", ft_result, std_result);
+	// printf("ft_read: %ld, read: %ld ", ft_result, std_result);
 	(ft_result == std_result) ? testOK() : testKO();
 	
 	
@@ -173,7 +176,7 @@ int main(void) {
 	ft_result = ft_read(fd, shortBuffer, sizeof(shortBuffer));
 	lseek(fd, 0, SEEK_SET);
 	std_result = read(fd, shortBuffer, sizeof(shortBuffer));
-	printf("ft_read: %ld, read: %ld ", ft_result, std_result);
+	// printf("ft_read: %ld, read: %ld ", ft_result, std_result);
 	(ft_result == std_result) ? testOK() : testKO();
 
 	printf("Test testRead.txt with buffer size = 0 : ");
@@ -181,18 +184,18 @@ int main(void) {
 	ft_result = ft_read(fd, emptyBuffer, sizeof(emptyBuffer));
 	lseek(fd, 0, SEEK_SET);
 	std_result = read(fd, emptyBuffer, sizeof(emptyBuffer));
-	printf("ft_read: %ld, read: %ld ", ft_result, std_result);
+	// printf("ft_read: %ld, read: %ld ", ft_result, std_result);
 	(ft_result == std_result) ? testOK() : testKO();
 
 	printf("Test testRead.txt with buffer size = 1400000 : ");
-	char bigBuffer[3000];
+	char bigBuffer[1400000];
 	ft_result = ft_read(fd, bigBuffer, sizeof(bigBuffer));
 	lseek(fd, 0, SEEK_SET);
 	std_result = read(fd, bigBuffer, sizeof(bigBuffer));
-	printf("ft_read: %ld, read: %ld ", ft_result, std_result);
+	// printf("ft_read: %ld, read: %ld ", ft_result, std_result);
 	(ft_result == std_result) ? testOK() : testKO();
 	
-	endTest("ft_write");
+	endTest(5);
 
 		/*
 	 ! FT_STRDUP
@@ -219,7 +222,7 @@ int main(void) {
 	(strcmp(msg, msg2) == 0) ? testOK() : testKO();
 	free(msg); free(msg2);
 
-	endTest("ft_strdup");
+	endTest(3);
 }
 
 

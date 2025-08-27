@@ -2,7 +2,6 @@ global ft_strcmp
 
 section .text
 
-; int strcmp(const char *s1, const char *s2);
 ft_strcmp:
 	mov eax, 0
 
