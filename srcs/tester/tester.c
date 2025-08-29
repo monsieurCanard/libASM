@@ -3,6 +3,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <errno.h>
 
 extern size_t ft_strlen(const char *str);
 extern char *ft_strcpy(char *dest, const char *src);

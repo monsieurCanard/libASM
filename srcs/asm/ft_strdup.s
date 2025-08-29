@@ -7,7 +7,6 @@ section .text
 ft_strdup:
 	push rbx
 	mov rbx, rdi 
-	; mov r10, rdi
 
 	call ft_strlen
 	inc rax
@@ -20,16 +19,21 @@ ft_strdup:
 	mov rsi, rbx
 	mov rdi, rax
 	call ft_strcpy
+	
 	pop rbx
 	ret
 
 .error:
 	xor rax, rax
 	pop rbx
+	
+	mov edi, 12
+	call __errno_location wrt ..plt
+	mov [rax], edi
+	xor rax, rax
 	ret
 
 ft_strlen:
-	; mov rax, 0
 	mov rcx, rdi
 
 .loop:
