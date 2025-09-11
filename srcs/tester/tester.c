@@ -14,6 +14,10 @@ extern char *ft_strdup(const char *s);
 
 int counter = 0;
 
+
+void test_ft_read_errno();
+void test_ft_write_errno();
+
 void headerTest(char* nameFunction) {
 	printf("\n----------------------------------------------------------\n");
 	printf("FUNCTION --------- [%s]", nameFunction);
@@ -35,7 +39,6 @@ void testOK() {
 void testKO() {
 		printf("\e[1;31m[KO]\e[0m\n");
 }
-
 
 int main(void) {
 
@@ -88,7 +91,7 @@ int main(void) {
 		/*
 	 ! FT_STRCMP
 	*/
-	headerTest("ft_strcpy");
+	headerTest("ft_strcmp");
 
 	printf("Test Empty: ");
 	(ft_strcmp("", "") == 0) ? testOK() : testKO();
@@ -132,6 +135,7 @@ int main(void) {
 	(write(fd, "J'ecris un message dans ce fichier", 34) == ft_write(fd, "J'ecris un message dans ce fichier", 34)) ? testOK() : testKO();
 
 	endTest(4);
+	test_ft_write_errno();
 	
 
 
@@ -197,6 +201,7 @@ int main(void) {
 	(ft_result == std_result) ? testOK() : testKO();
 	
 	endTest(5);
+	test_ft_read_errno();
 
 		/*
 	 ! FT_STRDUP
@@ -227,3 +232,131 @@ int main(void) {
 }
 
 
+
+void test_ft_read_errno() {
+    char buffer[100];
+    ssize_t result;
+    
+		headerTest("Ft_read ERRNO");
+
+    // Test 1: Lecture normale (devrait réussir)
+    printf("\nTest 1: Lecture normale\n");
+    errno = 0;
+    result = ft_read(STDIN_FILENO, buffer, 0);
+    printf("ft_read(STDIN, buffer, 0) = %ld, errno = %d (%s)\n", 
+           result, errno, strerror(errno));
+		(errno == 0) ? testOK() : testKO();
+		
+    
+    // Test 2: File descriptor invalide (devrait échouer avec EBADF)
+    printf("\nTest 2: FD invalide (-1)\n");
+    errno = 0;
+    result = ft_read(-1, buffer, 10);
+    printf("ft_read(-1, buffer, 10) = %ld, errno = %d (%s)\n", 
+           result, errno, strerror(errno));
+    printf("Attendu: errno = %d (EBADF)\n", EBADF);
+		(errno == EBADF) ? testOK() : testKO();
+
+    
+    // Test 3: FD fermé (devrait échouer avec EBADF)
+    printf("\nTest 3: FD fermé\n");
+    errno = 0;
+    result = ft_read(999, buffer, 10);
+    printf("ft_read(999, buffer, 10) = %ld, errno = %d (%s)\n", 
+           result, errno, strerror(errno));
+    printf("Attendu: errno = %d (EBADF)\n", EBADF);
+		(errno == EBADF) ? testOK() : testKO();
+
+    
+    // Test 4: Buffer NULL (devrait échouer avec EFAULT)
+    printf("\nTest 4: Buffer NULL\n");
+    errno = 0;
+    result = ft_read(STDIN_FILENO, NULL, 10);
+    printf("ft_read(STDIN, NULL, 10) = %ld, errno = %d (%s)\n", 
+           result, errno, strerror(errno));
+    printf("Attendu: errno = %d (EFAULT)\n", EFAULT);
+		(errno == EFAULT) ? testOK() : testKO();
+
+    
+    // Test 5: Comparaison avec la vraie fonction read
+    printf("\n=== Comparaison avec read() ===\n");
+    
+    // Test avec read() système
+    errno = 0;
+    ssize_t sys_result = read(-1, buffer, 10);
+    int sys_errno = errno;
+    
+    // Test avec votre ft_read
+    errno = 0;
+    ssize_t ft_result = ft_read(-1, buffer, 10);
+    int ft_errno = errno;
+    
+    printf("read(-1) = %ld, errno = %d\n", sys_result, sys_errno);
+    printf("ft_read(-1) = %ld, errno = %d\n", ft_result, ft_errno);
+    (sys_errno == ft_errno) ? testOK() : testKO();
+		endTest(5);
+}
+
+void test_ft_write_errno() {
+    char buffer[100];
+    ssize_t result;
+    
+		headerTest("Ft_write ERRNO");
+
+    // Test 1: Lecture normale (devrait réussir)
+    printf("\nTest 1: Lecture normale\n");
+    errno = 0;
+    result = ft_write(STDIN_FILENO, buffer, 0);
+    printf("ft_write(STDIN, buffer, 0) = %ld, errno = %d (%s)\n", 
+           result, errno, strerror(errno));
+		(errno == 0) ? testOK() : testKO();
+		
+    
+    // Test 2: File descriptor invalide (devrait échouer avec EBADF)
+    printf("\nTest 2: FD invalide (-1)\n");
+    errno = 0;
+    result = ft_write(-1, buffer, 10);
+    printf("ft_write(-1, buffer, 10) = %ld, errno = %d (%s)\n", 
+           result, errno, strerror(errno));
+    printf("Attendu: errno = %d (EBADF)\n", EBADF);
+		(errno == EBADF) ? testOK() : testKO();
+
+    
+    // Test 3: FD fermé (devrait échouer avec EBADF)
+    printf("\nTest 3: FD fermé\n");
+    errno = 0;
+    result = ft_write(999, buffer, 10);
+    printf("ft_write(999, buffer, 10) = %ld, errno = %d (%s)\n", 
+           result, errno, strerror(errno));
+    printf("Attendu: errno = %d (EBADF)\n", EBADF);
+		(errno == EBADF) ? testOK() : testKO();
+
+    
+    // Test 4: Buffer NULL (devrait échouer avec EFAULT)
+    printf("\nTest 4: Buffer NULL\n");
+    errno = 0;
+    result = ft_write(STDIN_FILENO, NULL, 10);
+    printf("ft_write(STDIN, NULL, 10) = %ld, errno = %d (%s)\n", 
+           result, errno, strerror(errno));
+    printf("Attendu: errno = %d (EFAULT)\n", EFAULT);
+		(errno == EFAULT) ? testOK() : testKO();
+
+    
+    // Test 5: Comparaison avec la vraie fonction write
+    printf("\n=== Comparaison avec write() ===\n");
+    
+    // Test avec write() système
+    errno = 0;
+    ssize_t sys_result = write(-1, buffer, 10);
+    int sys_errno = errno;
+    
+    // Test avec votre ft_write
+    errno = 0;
+    ssize_t ft_result = ft_write(-1, buffer, 10);
+    int ft_errno = errno;
+    
+    printf("write(-1) = %ld, errno = %d\n", sys_result, sys_errno);
+    printf("ft_write(-1) = %ld, errno = %d\n", ft_result, ft_errno);
+    (sys_errno == ft_errno) ? testOK() : testKO();
+		endTest(5);
+}

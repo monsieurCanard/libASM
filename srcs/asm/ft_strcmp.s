@@ -24,7 +24,6 @@ ft_strcmp:
 	sub eax, edx
 	ret
 
-
 .equal:
 	xor eax, eax
 	ret
