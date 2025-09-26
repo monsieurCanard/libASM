@@ -16,4 +16,3 @@ ft_strlen:
 	sub rcx, rdi
 	mov rax, rcx
 	ret
-

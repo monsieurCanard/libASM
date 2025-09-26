@@ -7,7 +7,7 @@ ft_read:
 	syscall
 	cmp rax, 0
 	jge .ret
-	
+
 	neg rax
 	mov edi, eax
 	call __errno_location wrt ..plt

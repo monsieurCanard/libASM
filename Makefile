@@ -15,7 +15,7 @@ OBJ = $(SRCS:%.s=$(OBJ_DIR)%.o)
 
 NAME = libasm.a
 
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror
 
 NASM = nasm 
 

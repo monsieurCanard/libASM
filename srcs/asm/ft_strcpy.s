@@ -7,8 +7,10 @@ ft_strcpy:
 .loop:
 	mov al, [rsi]
 	mov [rdi], al
+
 	inc rdi
 	inc rsi
+	
 	test al, al
 	jnz .loop
 	ret
