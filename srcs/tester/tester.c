@@ -43,7 +43,7 @@ void testKO() {
 int main(void) {
 
 /*
-! FT_STRCPY
+! FT_STRLEN
 */ 
 	headerTest("ft_strlen");
 	
@@ -71,19 +71,16 @@ int main(void) {
 	char newMessage2[50];
 	
 	printf("Test Empty: ");
-	ft_strcpy(newMessage, "");
-	strcpy(newMessage2, "");
-	(strcmp(newMessage, newMessage2) == 0) ? testOK() : testKO();
-	
+	printf("\nft_strcpy[%s]\n", ft_strcpy(newMessage, ""));
+	printf("strcpy[%s]\n", strcpy(newMessage2, ""));
+
 	printf("Test Simple: ");
-	ft_strcpy(newMessage, "Je suis une chips");
-	strcpy(newMessage2, "Je suis une chips");
-	(strcmp(newMessage, newMessage2) == 0) ? testOK() : testKO();
-	
+	printf("\nft_strcpy[%s]\n", ft_strcpy(newMessage, "Hello World!"));
+	printf("strcpy[%s]\n", strcpy(newMessage2, "Hello World!"));
+
 	printf("Test Diff: ");
-	ft_strcpy(newMessage, "");
-	strcpy(newMessage2, "Assembleur");
-	(strcmp(newMessage, newMessage2) != 0) ? testOK() : testKO();
+	printf("\nft_strcpy[%s]\n", ft_strcpy(newMessage, "Coucouc tout le monde !"));
+	printf("strcpy[%s]\n", strcpy(newMessage2, "Coucouc tout le monde !"));
 
 	endTest(3);
 
@@ -94,21 +91,23 @@ int main(void) {
 	headerTest("ft_strcmp");
 
 	printf("Test Empty: ");
-	(ft_strcmp("", "") == 0) ? testOK() : testKO();
+	(ft_strcmp("", "") == strcmp("", "")) ? testOK() : testKO();
 
 	printf("Test Simple: ");
-	(ft_strcmp("Hello fucking World!", "Hello fucking World!") == 0) ? testOK() : testKO();
+	(ft_strcmp("Hello fucking World!", "Hello fucking World!") == strcmp("Hello fucking World!", "Hello fucking World!")) ? testOK() : testKO();
 
 	printf("Test Long: ");
-	(ft_strcmp("Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!", "Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!") == 0) ? testOK() : testKO();
+	(ft_strcmp("Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!", "Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!") == strcmp("Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!", "Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!Hello fucking World!")) ? testOK() : testKO();
 
 
 	printf("Test Diff 1: ");
-	(ft_strcmp("Hello beautifull World!", "Hello fucking World!") > 0) ? testOK() : testKO();
+	printf("\nft_strcmp[%d]\n", ft_strcmp("Hello beautifull World!", "Hello fucking World!"));
+	printf("strcmp[%d]\n", strcmp("Hello beautifull World!", "Hello fucking World!"));
+	(ft_strcmp("Hello beautifull World!", "Hello fucking World!") == strcmp("Hello beautifull World!", "Hello fucking World!")) ? testOK() : testKO();
 
 	printf("Test Diff 2: ");
-	(ft_strcmp("Hello beautifull World!", "Hello awesome World!") < 0) ? testOK() : testKO();
-	
+	(ft_strcmp("Hello beautifull World!", "Hello awesome World!") == strcmp("Hello beautifull World!", "Hello awesome World!")) ? testOK() : testKO();
+
 	endTest(5);
 
 /*

@@ -2,8 +2,9 @@ global ft_strcpy
 section .text
 
 ft_strcpy:
-	mov rax, rdi
-
+push rbx
+	mov rbx, rdi
+	
 .loop:
 	mov al, [rsi]
 	mov [rdi], al
@@ -13,4 +14,7 @@ ft_strcpy:
 	
 	test al, al
 	jnz .loop
+	
+	mov rax, rbx
+	pop rbx
 	ret
