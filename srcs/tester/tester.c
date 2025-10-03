@@ -14,7 +14,6 @@ extern char *ft_strdup(const char *s);
 
 int counter = 0;
 
-
 void test_ft_read_errno();
 void test_ft_write_errno();
 
@@ -71,16 +70,16 @@ int main(void) {
 	char newMessage2[50];
 	
 	printf("Test Empty: ");
-	printf("\nft_strcpy[%s]\n", ft_strcpy(newMessage, ""));
-	printf("strcpy[%s]\n", strcpy(newMessage2, ""));
+	printf("\nft_strcpy [%s]\n", ft_strcpy(newMessage, ""));
+	printf("strcpy [%s]\n", strcpy(newMessage2, ""));
 
 	printf("Test Simple: ");
-	printf("\nft_strcpy[%s]\n", ft_strcpy(newMessage, "Hello World!"));
-	printf("strcpy[%s]\n", strcpy(newMessage2, "Hello World!"));
+	printf("\nft_strcpy [%s]\n", ft_strcpy(newMessage, "Hello World!"));
+	printf("strcpy [%s]\n", strcpy(newMessage2, "Hello World!"));
 
 	printf("Test Diff: ");
-	printf("\nft_strcpy[%s]\n", ft_strcpy(newMessage, "Coucouc tout le monde !"));
-	printf("strcpy[%s]\n", strcpy(newMessage2, "Coucouc tout le monde !"));
+	printf("\nft_strcpy [%s]\n", ft_strcpy(newMessage, "Coucou tout le monde !"));
+	printf("strcpy [%s]\n", strcpy(newMessage2, "Coucou tout le monde !"));
 
 	endTest(3);
 
@@ -101,8 +100,10 @@ int main(void) {
 
 
 	printf("Test Diff 1: ");
+	
 	printf("\nft_strcmp[%d]\n", ft_strcmp("Hello beautifull World!", "Hello fucking World!"));
 	printf("strcmp[%d]\n", strcmp("Hello beautifull World!", "Hello fucking World!"));
+
 	(ft_strcmp("Hello beautifull World!", "Hello fucking World!") == strcmp("Hello beautifull World!", "Hello fucking World!")) ? testOK() : testKO();
 
 	printf("Test Diff 2: ");
@@ -130,13 +131,11 @@ int main(void) {
 	(write(fd, "SqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualala", 1832) == ft_write(fd, "SqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualalaSqualala", 1832)) ? testOK() : testKO();
 
 
-	
 	(write(fd, "J'ecris un message dans ce fichier", 34) == ft_write(fd, "J'ecris un message dans ce fichier", 34)) ? testOK() : testKO();
 
 	endTest(4);
 	test_ft_write_errno();
 	
-
 
 	/*
 	 ! FT_READ

@@ -24,7 +24,6 @@ ft_strcmp:
 	sub eax, edx
 	test eax, eax
 
-	//Jump if sign bit is set (negative)
 	js .negative
 	mov eax, 1
 	ret
