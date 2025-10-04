@@ -1,3 +1,5 @@
+<img width="2000" height="626" alt="Image" src="https://github.com/user-attachments/assets/a94317b3-134b-4f77-8767-566b44f9b625" />
+
 # libASM
 
 [![Language](https://img.shields.io/badge/language-Assembly-red.svg)](https://en.wikipedia.org/wiki/Assembly_language)
